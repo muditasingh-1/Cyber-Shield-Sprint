@@ -5,16 +5,31 @@ from urllib.parse import quote_plus
 
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-load_dotenv()
 app = Flask(__name__)
+load_dotenv()
 
-MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "mysql+pymysql://root:"
-    + quote_plus(MYSQL_PASSWORD)
-    + "@localhost:3306/cyber_shield_sprint"
-)
+if DATABASE_URL:
+    # Render Postgres deployment
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace(
+            "postgres://",
+            "postgresql://",
+            1
+        )
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
+
+else:
+    # Local MySQL development
+    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "mysql+pymysql://root:"
+        + quote_plus(MYSQL_PASSWORD)
+        + "@localhost:3306/cyber_shield_sprint"
+    )
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -50,7 +65,8 @@ class Player(db.Model):
         nullable=False,
         default=datetime.now
     )
-
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
