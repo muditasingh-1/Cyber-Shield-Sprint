@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attempt Already Used</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-box">
+        <p class="tag">ONE ATTEMPT ONLY</p>
+        <h1>Attempt Already Used</h1>
+        <p class="description">
+            {{ player_name }}, your game attempt has already been recorded.
+        </p>
+        <a class="home-button" href="/">BACK TO HOME</a>
+    </div>
+</body>
+</html>

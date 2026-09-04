@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-box">
+
+        {% if reason == "completed" %}
+            <p class="tag">RUN COMPLETE</p>
+            <h1>Nice Defense!</h1>
+        {% else %}
+            <p class="tag">MALWARE CAUGHT YOU</p>
+            <h1>Threat Detected!</h1>
+        {% endif %}
+
+        <p class="description">{{ player_name }}, you collected:</p>
+
+        <h1 class="final-score">{{ score }} Shields</h1>
+        <p class="rank-text">Your current rank: #{{ rank }}</p>
+
+<div class="leaderboard-box">
+    <p class="tag">TOP DEFENDERS</p>
+
+    <ol>
+        {% for player in leaderboard %}
+            <li>
+                <span>{{ player.name }}</span>
+                <b>{{ player.score }} shields · {{ player.hits }} hits</b>
+            </li>
+        {% endfor %}
+    </ol>
+</div>
+
+        <a class="home-button" href="/">BACK TO HOME</a>
+
+    </div>
+</body>
+</html>

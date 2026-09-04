@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Shield Sprint Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-box">
+        <p class="tag">CYBER SHIELD SPRINT</p>
+        <h1>LEADERBOARD</h1>
+
+        <div class="leaderboard-box">
+            <ol>
+                {% for player in leaderboard %}
+                    <li>
+                        <span>{{ player.name }}</span>
+                        <b>
+                            {{ player.score }} shields ·
+                            {{ player.hits }} hits
+                        </b>
+                    </li>
+                {% else %}
+                    <p class="description">No runs recorded yet.</p>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <a class="home-button" href="/">BACK TO HOME</a>
+    </div>
+</body>
+</html>

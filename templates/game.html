@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Shield Sprint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <div class="start-overlay" id="start-overlay">
+    <p id="countdown-text">READY TO RUN?</p>
+    <button id="start-run-button">START RUN</button>
+</div>
+
+        <div class="game-header">
+            <div>
+                <p>PLAYER</p>
+                <h3>{{ player_name }}</h3>
+            </div>
+
+            <div>
+                <p>TIME LEFT</p>
+                <h3 id="timer">03:00</h3>
+            </div>
+
+            <div>
+                <p>SHIELDS</p>
+                <h3 id="score">0</h3>
+            </div>
+        </div>
+        <div>
+    <p>MALWARE</p>
+    <h3 id="malware-status">SAFE</h3>
+</div>
+
+        <div class="game-track">
+
+    <div class="jungle jungle-left"></div>
+    <div class="jungle jungle-right"></div>
+
+    <div class="road"></div>
+    <div class="road-mark mark-left"></div>
+    <div class="road-mark mark-right"></div>
+
+    <div class="malware">
+    <div class="malware-eye eye-left"></div>
+    <div class="malware-eye eye-right"></div>
+    <div class="malware-mouth"></div>
+    <p>MALWARE</p>
+</div>
+
+    <div class="runner" id="runner">
+    <div class="runner-head"></div>
+    <div class="runner-body"></div>
+    <div class="runner-arm arm-left"></div>
+    <div class="runner-arm arm-right"></div>
+    <div class="runner-leg leg-left"></div>
+    <div class="runner-leg leg-right"></div>
+</div>
+
+</div>
+       <p class="instruction">
+    LEFT / RIGHT: move &nbsp; | &nbsp; SPACE: jump &nbsp; | &nbsp; DOWN: duck
+</p>
+            Use LEFT and RIGHT arrow keys to move. Use SPACEBAR to jump.
+        </p>
+
+    </div>
+    <div class="mobile-controls">
+    <button id="left-button">←</button>
+    <button id="jump-button">JUMP</button>
+    <button id="duck-button">DUCK</button>
+    <button id="right-button">→</button>
+    <button id="pause-button">PAUSE</button>
+</div>
+<div class="danger-section">
+    <p>MALWARE DISTANCE</p>
+
+    <div class="danger-bar">
+        <div id="danger-fill"></div>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>

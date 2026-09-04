@@ -1,0 +1,583 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #071b2b;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.main-box {
+    width: 500px;
+    padding: 45px;
+    text-align: center;
+    background-color: #102f45;
+    border: 2px solid #32e0c4;
+    border-radius: 12px;
+}
+
+.tag {
+    color: #32e0c4;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 20px 0;
+}
+
+.description {
+    color: #c9d6df;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 90%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    width: 96%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #32e0c4;
+    color: #071b2b;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.game-container {
+    width: 900px;
+    max-width: 95%;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.game-header p {
+    margin: 0;
+    color: #32e0c4;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.game-header h3 {
+    margin: 5px 0;
+}
+
+.game-track {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+    border: 2px solid #32e0c4;
+    background: linear-gradient(to bottom, #153d57, #071b2b);
+}
+
+.lane {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 33.33%;
+    border-right: 1px dashed #5b7c8c;
+}
+
+.lane-1 {
+    left: 0;
+}
+
+.lane-2 {
+    left: 33.33%;
+}
+
+.lane-3 {
+    left: 66.66%;
+}
+
+.runner {
+    position: absolute;
+    bottom: 35px;
+    left: 48%;
+    z-index: 2;
+    font-size: 65px;
+    transition: left 0.2s;
+}
+
+.malware {
+    position: absolute;
+    bottom: 35px;
+    left: 5%;
+    font-size: 80px;
+}
+
+.instruction {
+    text-align: center;
+    color: #c9d6df;
+    font-size: 14px;
+}
+
+.jump {
+    animation: jumpAnimation 0.5s ease-out;
+}
+
+@keyframes jumpAnimation {
+    0% {
+        bottom: 35px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 35px;
+    }
+}
+.shield {
+    position: absolute;
+    z-index: 3;
+    font-size: 45px;
+}
+.obstacle {
+    position: absolute;
+    z-index: 3;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6395b;
+    border-radius: 8px;
+    font-size: 28px;
+    box-shadow: 0 0 15px #e6395b;
+}
+.game-track {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+    border: 2px solid #32e0c4;
+    background: linear-gradient(to bottom, #0d3141 0%, #08212b 45%, #031018 100%);
+}
+
+/* Cyber jungle on both sides */
+.jungle {
+    position: absolute;
+    bottom: 0;
+    width: 30%;
+    height: 75%;
+    z-index: 1;
+    opacity: 0.9;
+    background:
+        radial-gradient(circle at 20% 20%, #42d7c2 0 3px, transparent 4px),
+        radial-gradient(circle at 50% 45%, #1d9d91 0 7px, transparent 8px),
+        radial-gradient(circle at 70% 10%, #4ef4da 0 4px, transparent 5px),
+        linear-gradient(to top, #052b2d, #0d5950);
+}
+
+.jungle-left {
+    left: 0;
+    clip-path: polygon(0 0, 100% 20%, 82% 100%, 0 100%);
+}
+
+.jungle-right {
+    right: 0;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 18% 100%);
+}
+
+/* Road narrow at top, wide at bottom */
+.road {
+    position: absolute;
+    z-index: 2;
+    top: 100px;
+    bottom: 0;
+    left: 4%;
+    width: 92%;
+    background: linear-gradient(to bottom, #173e4a, #071722);
+    clip-path: polygon(43% 0, 57% 0, 100% 100%, 0 100%);
+}
+
+/* Road lane divider lines */
+.road-mark {
+    position: absolute;
+    z-index: 3;
+    top: 100px;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #4ef4da55, #4ef4da);
+    transform-origin: top;
+}
+
+.mark-left {
+    left: 46%;
+    transform: rotate(18deg);
+}
+
+.mark-right {
+    right: 46%;
+    transform: rotate(-18deg);
+}
+
+/* Put game items above the road */
+.runner {
+    z-index: 6;
+}
+
+.malware {
+    z-index: 5;
+}
+
+.shield,
+.obstacle {
+    z-index: 7;
+}
+.runner {
+    position: absolute;
+    bottom: 35px;
+    left: 48%;
+    width: 55px;
+    height: 110px;
+    font-size: 0;
+}
+
+.runner-head {
+    position: absolute;
+    top: 0;
+    left: 17px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffd6b0;
+}
+
+.runner-body {
+    position: absolute;
+    top: 21px;
+    left: 13px;
+    width: 30px;
+    height: 46px;
+    border-radius: 12px 12px 5px 5px;
+    background: #32e0c4;
+}
+
+.runner-arm {
+    position: absolute;
+    top: 29px;
+    width: 9px;
+    height: 40px;
+    border-radius: 8px;
+    background: #ffd6b0;
+    transform-origin: top;
+    animation: armRun 0.35s infinite alternate;
+}
+
+.arm-left {
+    left: 10px;
+    transform: rotate(35deg);
+}
+
+.arm-right {
+    right: 10px;
+    transform: rotate(-35deg);
+    animation-delay: 0.35s;
+}
+
+.runner-leg {
+    position: absolute;
+    top: 62px;
+    width: 11px;
+    height: 45px;
+    border-radius: 8px;
+    background: #d9f5ff;
+    transform-origin: top;
+    animation: legRun 0.35s infinite alternate;
+}
+
+.leg-left {
+    left: 14px;
+}
+
+.leg-right {
+    right: 14px;
+    animation-delay: 0.35s;
+}
+
+@keyframes armRun {
+    to {
+        transform: rotate(-35deg);
+    }
+}
+
+@keyframes legRun {
+    to {
+        transform: rotate(30deg);
+    }
+}
+.malware {
+    position: absolute;
+    bottom: 40px;
+    left: 5%;
+    width: 90px;
+    height: 72px;
+    border-radius: 45px 45px 20px 20px;
+    background: #e6395b;
+    box-shadow: 0 0 25px #e6395b;
+    font-size: 0;
+    transition: left 0.4s;
+}
+
+.malware-eye {
+    position: absolute;
+    top: 23px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px white;
+}
+
+.eye-left {
+    left: 20px;
+}
+
+.eye-right {
+    right: 20px;
+}
+
+.malware-mouth {
+    position: absolute;
+    top: 47px;
+    left: 33px;
+    width: 25px;
+    height: 12px;
+    border-bottom: 3px solid #420315;
+    border-radius: 50%;
+}
+
+.malware p {
+    position: absolute;
+    top: 72px;
+    width: 100%;
+    margin: 0;
+    color: #ff8ca6;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.duck {
+    transform: scaleY(0.55);
+    transform-origin: bottom;
+}
+.final-score {
+    color: #32e0c4;
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background-color: #32e0c4;
+    border-radius: 6px;
+    color: #071b2b;
+    font-weight: bold;
+    text-decoration: none;
+}
+.rank-text {
+    color: #ffd166;
+    font-weight: bold;
+}
+
+.leaderboard-box {
+    margin-top: 25px;
+    padding: 18px;
+    text-align: left;
+    background-color: #071b2b;
+    border: 1px solid #28576a;
+}
+
+.leaderboard-box ol {
+    padding-left: 25px;
+}
+
+.leaderboard-box li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #244554;
+}
+
+.leaderboard-box li b {
+    color: #32e0c4;
+}
+.mobile-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.mobile-controls button {
+    width: 85px;
+    padding: 12px 8px;
+    border: 1px solid #32e0c4;
+    border-radius: 6px;
+    background-color: #102f45;
+    color: #32e0c4;
+    font-size: 14px;
+}
+
+.mobile-controls button:active {
+    background-color: #32e0c4;
+    color: #071b2b;
+}
+.obstacle {
+    width: 86px;
+    height: 70px;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.obstacle-icon {
+    font-size: 28px;
+}
+
+.obstacle-label {
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+.danger-section {
+    margin-top: 14px;
+}
+
+.danger-section p {
+    margin: 0 0 7px;
+    color: #ff7996;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.danger-bar {
+    height: 10px;
+    overflow: hidden;
+    background-color: #1d3644;
+    border-radius: 10px;
+}
+
+#danger-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #ffc857, #e6395b);
+    transition: width 0.4s;
+}
+.road::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 49%;
+    width: 2%;
+    background: repeating-linear-gradient(
+        to bottom,
+        #4ef4da 0px,
+        #4ef4da 28px,
+        transparent 28px,
+        transparent 62px
+    );
+    animation: roadMove 0.55s linear infinite;
+    opacity: 0.75;
+}
+
+@keyframes roadMove {
+    from {
+        background-position-y: 0;
+    }
+
+    to {
+        background-position-y: 62px;
+    }
+}
+#pause-button {
+    width: auto;
+    height: 42px;
+    padding: 8px 16px;
+    align-self: center;
+    background-color: #ffcc66;
+    color: #071b2b;
+}
+
+.game-paused .road::after,
+.game-paused .runner-arm,
+.game-paused .runner-leg {
+    animation-play-state: paused;
+}
+.leaderboard-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: #32e0c4;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.start-overlay {
+    position: fixed;
+    z-index: 50;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #071b2be8;
+}
+
+.start-overlay p {
+    color: #32e0c4;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.start-overlay button {
+    width: 180px;
+    background-color: #32e0c4;
+    color: #071b2b;
+}
+.rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 25px 0;
+    text-align: left;
+}
+
+.rules div {
+    padding: 12px;
+    border: 1px solid #28576a;
+    background-color: #071b2b;
+}
+
+.rules b {
+    display: block;
+    margin-bottom: 5px;
+    color: #32e0c4;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.rules span {
+    color: #c9d6df;
+    font-size: 12px;
+}

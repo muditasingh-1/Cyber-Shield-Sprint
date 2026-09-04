@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Shield Sprint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-box">
+        <p class="tag">CYBERSECURITY AWARENESS GAME</p>
+
+        <h1>CYBER SHIELD SPRINT</h1>
+
+        <p class="description">
+            Outrun the malware. Collect shields. Survive for 3 minutes.
+        </p>
+        <div class="rules">
+    <div>
+        <b>COLLECT</b>
+        <span>🛡️ Cyber shields</span>
+    </div>
+
+    <div>
+        <b>JUMP</b>
+        <span>Over fake links and USB traps</span>
+    </div>
+
+    <div>
+        <b>DUCK</b>
+        <span>Under phishing hooks</span>
+    </div>
+
+    <div>
+        <b>SURVIVE</b>
+        <span>Do not let malware catch you</span>
+    </div>
+</div>
+       <form action="/game" method="get">
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <button type="submit">START GAME</button>
+        </form>
+        <a class="leaderboard-link" href="/leaderboard">
+    VIEW LEADERBOARD
+</a>
+    </div>
+</body>
+</html>
